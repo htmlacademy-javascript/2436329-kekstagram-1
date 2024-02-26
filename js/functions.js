@@ -92,7 +92,7 @@ function isLength (first, length) {
   }
 }
 
-// test
+// test123
 
 isLength('проверяемая строка', 20);
 isLength('проверяемая строка', 18);
