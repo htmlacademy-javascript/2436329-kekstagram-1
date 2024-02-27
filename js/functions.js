@@ -20,14 +20,14 @@ isPalindrome('Лёша на полке клопа нашёл ');
 
 // Task 2
 
-const isNumber = function (smth) {
-  if (typeof smth === 'number') {
-    smth = smth.toString();
+const isNumber = function (string) {
+  if (typeof string === 'number') {
+    string = string.toString();
   }
   let num = '';
-  for (let i = 0; i < smth.length; i++) {
-    if (smth[i] >= '0' && smth[i] <= '9' && smth[i] !== ' ') {
-      num += smth[i];
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] >= '0' && string[i] <= '9' && string[i] !== ' ') {
+      num += string[i];
     }
   }
   return num;
@@ -55,15 +55,15 @@ const lengthString = function (first, length, second) {
   }
   if ((first.length + second.length) < length) {
     const restOfLength = length - first.length;
-    const needLength = Math.floor(restOfLength / second.length);
+    const needTimesOfSecond = Math.floor(restOfLength / second.length);
 
-    for (let i = 0; i < needLength; i++) {
+    for (let i = 0; i < needTimesOfSecond; i++) {
       first = second + first;
     }
 
     if (first.length !== length) {
-      const anotherString = length - first.length;
-      first = second.slice(0, anotherString) + first;
+      const anotherLengthRest = length - first.length;
+      first = second.slice(0, anotherLengthRest) + first;
     }
 
     return first;
