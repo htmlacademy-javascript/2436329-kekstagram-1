@@ -4,12 +4,9 @@ const isPalindrome = function (string) {
   const normilizedString = string.replaceAll(' ', '').toLowerCase();
   for (let i = 0; i < normilizedString.length; i++) {
     if (normilizedString[i] !== normilizedString[normilizedString.length - 1 - i]) {
-
       return false;
     }
-
   }
-
   return true;
 };
 
@@ -20,10 +17,7 @@ isPalindrome('Лёша на полке клопа нашёл ');
 
 // Task 2
 
-const isNumber = function (string) {
-  if (typeof string === 'number') {
-    string = string.toString();
-  }
+const parseNumber = function (string) {
   let num = '';
   for (let i = 0; i < string.length; i++) {
     if (string[i] >= '0' && string[i] <= '9' && string[i] !== ' ') {
@@ -33,59 +27,57 @@ const isNumber = function (string) {
   return num;
 };
 
-isNumber('2023 год');
-isNumber('ECMAScript 2022');
-isNumber('1 кефир, 0.5 батона');
-isNumber('агент 007');
-isNumber('а я томат');
-isNumber(-1);
+parseNumber('2023 год');
+parseNumber('ECMAScript 2022');
+parseNumber('1 кефир, 0.5 батона');
+parseNumber('агент 007');
+parseNumber('а я томат');
+parseNumber(-1);
 
 // Task 3
 
-const lengthString = function (first, length, second) {
-  if (first.length >= length) {
-
-    return first;
+const getStringLength = function (firstExpression, length, secondExpression) {
+  if (firstExpression.length >= length) {
+    return firstExpression;
   }
-  if ((first.length + second.length) > length) {
-    const restOfLength = length - first.length;
-    const restOfSec = second.slice(0, restOfLength);
+  if ((firstExpression.length + secondExpression.length) > length) {
+    const restOfLength = length - firstExpression.length;
+    const restOfSec = secondExpression.slice(0, restOfLength);
 
-    return restOfSec + first;
+    return restOfSec + firstExpression;
   }
-  if ((first.length + second.length) < length) {
-    const restOfLength = length - first.length;
-    const needTimesOfSecond = Math.floor(restOfLength / second.length);
+  if ((firstExpression.length + secondExpression.length) < length) {
+    const restOfLength = length - firstExpression.length;
+    const needTimesOfSecond = Math.floor(restOfLength / secondExpression.length);
 
     for (let i = 0; i < needTimesOfSecond; i++) {
-      first = second + first;
+      firstExpression = secondExpression + firstExpression;
     }
 
-    if (first.length !== length) {
-      const anotherLengthRest = length - first.length;
-      first = second.slice(0, anotherLengthRest) + first;
+    if (firstExpression.length !== length) {
+      const anotherLengthRest = length - firstExpression.length;
+      firstExpression = secondExpression.slice(0, anotherLengthRest) + firstExpression;
     }
-
-    return first;
+    return firstExpression;
   }
 
-  if ((first.length + second.length) === length) {
+  if ((firstExpression.length + secondExpression.length) === length) {
 
-    return second + first;
+    return secondExpression + firstExpression;
   }
 };
 
 
-lengthString('1', 2, '0');
-lengthString('1', 4, '0');
-lengthString('q', 4, 'werty');
-lengthString('q', 4, 'we');
-lengthString('qwerty', 4, '0');
+getStringLength('1', 2, '0');
+getStringLength('1', 4, '0');
+getStringLength('q', 4, 'werty');
+getStringLength('q', 4, 'we');
+getStringLength('qwerty', 4, '0');
 
 // Task 4
 
-function isLength (first, length) {
-  if (first.length <= length) {
+function checkStringMaxLength (expression, length) {
+  if (expression.length <= length) {
     return true;
   } {
     return false;
@@ -94,6 +86,6 @@ function isLength (first, length) {
 
 // test1234
 
-isLength('проверяемая строка', 20);
-isLength('проверяемая строка', 18);
-isLength('проверяемая строка', 10);
+checkStringMaxLength('проверяемая строка', 20);
+checkStringMaxLength('проверяемая строка', 18);
+checkStringMaxLength('проверяемая строка', 10);
